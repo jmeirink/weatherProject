@@ -11,7 +11,14 @@ app.get("/", function(req, res){
     console.log(response.statusCode);
 
     response.on("data", function(data){
-      console.log(data);
+      const weatherData = JSON.parse(data);
+
+      const temp = weatherData.main.temp;
+      console.log(temp);
+
+      const weatherDescription = weatherData.weather[0].description;
+      console.log(weatherDescription);
+
     });
   });
 
