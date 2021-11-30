@@ -12,17 +12,13 @@ app.get("/", function(req, res){
 
     response.on("data", function(data){
       const weatherData = JSON.parse(data);
-
       const temp = weatherData.main.temp;
-      console.log(temp);
-
       const weatherDescription = weatherData.weather[0].description;
-      console.log(weatherDescription);
-
+      res.write("<p>The weather is currently " + weatherDescription + "</p>");
+      res.write("<h1>The temperature in London is " + temp + " degrees Celcius.</h1>");
+      res.send()
     });
   });
-
-  res.send("Server is up and running");
 });
 
 
